@@ -13,7 +13,8 @@ import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView resultTv, solutionTv;
+    TextView resultTv;
+    TextView solutionTv;
     MaterialButton buttonC, buttonBrackOpen, buttonBrackClose;
     MaterialButton buttonDivide, buttonMultiply, buttonPlus, buttonMinus, buttonEquals;
     MaterialButton button0, button1, button2, button3, button4, button5, button6, button7, button8, button9;
@@ -65,21 +66,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (buttonText.equals("=")) {
             solutionTv.setText(resultTv.getText());
+//            solutionTv.setText("");
             return;
         }
+
         if (buttonText.equals("C")) {
             dataToCalculate = dataToCalculate.substring(0,dataToCalculate.length()-1);
         }
+
         else {
             dataToCalculate = dataToCalculate+buttonText;
         }
 
         solutionTv.setText(dataToCalculate);
         String finalResult = getResult(dataToCalculate);
-        if (!finalResult.equals("Err")) {
+       if (!finalResult.equals("Err")) {
             resultTv.setText(finalResult);
         }
-    }
+   }
 
     String getResult(String data){
 
