@@ -66,12 +66,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (buttonText.equals("=")) {
             solutionTv.setText(resultTv.getText());
-//            solutionTv.setText("");
+            solutionTv.setText(" ");
             return;
         }
 
+
         if (buttonText.equals("C")) {
-            dataToCalculate = dataToCalculate.substring(0,dataToCalculate.length()-1);
+            //dataToCalculate = dataToCalculate.substring(0,dataToCalculate.length()-1);
+            if(dataToCalculate.length() > 0)
+            {
+                StringBuilder sb = new StringBuilder(solutionTv.getText());
+                sb.deleteCharAt(solutionTv.getText().length()-1);
+                dataToCalculate = sb.toString();
+                solutionTv.setText(dataToCalculate);
+                resultTv.setText(dataToCalculate);
+            }
+            return;
         }
 
         else {
